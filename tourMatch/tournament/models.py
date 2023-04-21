@@ -6,6 +6,7 @@ import json
 class Tournament (models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tournament_name = models.CharField(max_length=100)
+    participants = models.DecimalField(max_digits=2, decimal_places=0)
     result = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
 

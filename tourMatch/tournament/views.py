@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .forms import TournamentForm
 
 # Create your views here.
 @login_required
@@ -12,4 +13,10 @@ def tournamnet_list(request):
 
 
 def create_tournament(request):    
-    return render(request, 'tournament/create_tournament.html')
+    if request.method == 'POST':
+        participants = int(request.POST['participants'])
+        return render(request, 'tournament/create_tournament.html', {'participants': participants})
+    else:
+        form = TournamentForm
+    return render(request, 'tournament/set_tournament.html', {'form': form})
+

@@ -5,4 +5,4 @@ from . import models
 class TournamentForm(forms.ModelForm):
     class Meta:
         model = models.Tournament
-        fields = ('tournament_name')
+        fields = ('tournament_name', 'participants')
