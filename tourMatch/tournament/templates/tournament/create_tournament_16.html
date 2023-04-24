@@ -2,9 +2,46 @@
 
 {% block content %}
 <div class="container tournament-chart">
+    <div id="contents">
+        <div class="team_manage" style="display: none;"></div>
+        <div class="bracket_overflow">
+            <div class="match_list_outer" id="bracket">
+                <div class="round_set_outer">
+                    <div class="round_set">
+                        <p class="screen">Round of 16</p>
+                    </div>
+                    <div class="round_set">
+                        <p class="screen">Quarterfinals</p>
+                    </div>
+                    <div class="round_set">
+                        <p class="screen">Semifinals</p>
+                    </div>
+                    <div class="round_set">
+                        <p class="screen">Final</p>
+                    </div>
+                </div>
+                <div class="players">
+                    <div class="match1 round_group">
+                        <div class="match_g01">
+                            <div class="match_list">
+                                <p class="bracket_num">#<em>01</em></p>
+                                <p class="machine_num"><input type="text" value="matchup name"></p>
+                            </div>
+                            <div class="match_list bottom01"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
     {% for i in participants %}
     <svg width="58" height="30">
-        <rect width="58" height="30" style="fill:rgb(224, 224, 229);stroke-width:3;stroke:rgb(0,0,0)" />
+        <rect width="58" height="30" style="fill:rgb(224, 224, 229);stroke-width:3;stroke:rgb(0,0,0);opacity:0.5" />
+        <text x="50" y="50" text-anchor="middle" fill="black" font-size="20">
+            Hello, {{participant}}
+        </text>
     </svg>
     {% endfor %}
 </div>
