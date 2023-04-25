@@ -18,15 +18,17 @@ def create_tournament(request):
     if form.is_valid():
         participants_data = form.cleaned_data['participants_choice']
         participants = 0
+        player_count = 1
+        even = False
         if participants_data == '1':
             participants = randomize(list(range(1, 17)))
-            return render(request, 'tournament/create_tournament_16.html', {'participants': participants})
+            return render(request, 'tournament/create_tournament_16.html', {'participants': participants, 'even': even, 'player_count': player_count})
         elif participants_data == '2':
             participants = randomize(list(range(1, 33)))
-            return render(request, 'tournament/create_tournament_32.html', {'participants': participants})
+            return render(request, 'tournament/create_tournament_32.html', {'participants': participants, 'even': even, 'player_count': player_count})
         elif participants_data == '3':
             participants == randomize(list(range(1, 65)))
-            return render(request, 'tournament/create_tournament_64.html', {'participants': participants})
+            return render(request, 'tournament/create_tournament_64.html', {'participants': participants, 'even': even, 'player_count': player_count})
         else:
             return render(request, 'tournament/fail.html')
     else:
@@ -36,5 +38,9 @@ def create_tournament(request):
 def randomize(list):
     randomized = []
     while(len(list)>0):
-        randomized.append(list.pop(random.randint(0, len(list)-1)))
+        sublist = []
+        for i in range(0, 4):
+            sublist.append(list.pop(random.randint(0, len(list)-1)))
+            if i == 3:
+                randomized.append(sublist)
     return randomized

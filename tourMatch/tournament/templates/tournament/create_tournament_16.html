@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load my_tags %}
 
 {% block content %}
 <div class="container tournament-chart">
@@ -20,30 +21,35 @@
                         <p class="screen">Final</p>
                     </div>
                 </div>
-                <div class="players">
-                    <div class="match1 round_group">
-                        <div class="match_g01">
-                            <div class="match_list">
-                                <p class="bracket_num">#<em>01</em></p>
-                                <p class="machine_num"><input type="text" value="matchup name"></p>
+                {% for sublist in participants %}
+                    {% for participant in sublist %}
+                    <div class="players">
+                        <div class="match01 round_group">
+                            <div class="match_g01">
+                                <div class="match_list">
+                                    <p class="bracket_num">#<em>{{forloop.counter}}</em></p>
+                                    <div class="box_s">                                    
+                                        <div class="match_list_cont01 l01"><span>{{forloop.counter}}</span>
+                                            <div><p>Player{{participant}}</p></div>
+                                        </div>
+                                        
+                                        <!-- <div class="match_list_cont02 l01"><span>{{forloop.counter}}</span>
+                                            <div><p>Player{{participant}}</p></div>
+                                        </div> -->
+                                        
+                                    </div>
+                                </div>
+                                <div class="match_list bottom01"></div>
                             </div>
-                            <div class="match_list bottom01"></div>
-                        </div>
+                        </div>                    
                     </div>
-
-                </div>
+                    {% endfor %}
+                {% endfor %}
+                {% endwith %}
             </div>
 
         </div>
     </div>
-    {% for i in participants %}
-    <svg width="58" height="30">
-        <rect width="58" height="30" style="fill:rgb(224, 224, 229);stroke-width:3;stroke:rgb(0,0,0);opacity:0.5" />
-        <text x="50" y="50" text-anchor="middle" fill="black" font-size="20">
-            Hello, {{participant}}
-        </text>
-    </svg>
-    {% endfor %}
 </div>
 
 {% endblock %}

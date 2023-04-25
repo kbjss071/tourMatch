@@ -1,0 +1,37 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.navbar {
+    margin-bottom: 5em;
+}
+
+div {
+    display: block;
+}
+
+/* .round_set_outer {
+    position: relative;
+    top: 0;
+    left: -50px;
+    padding: 15px 50px 25px 50px;
+    z-index: 99999;
+} */
+
+/* .round_set_outer {
+    text-align: left;
+}
+
+.round_set {
+    display: inline-block;
+}
+
+.match_list_outer {
+    display: inline-block;
+    padding: 0 15px;
+    white-space: nowrap;
+    line-height: 0;
+    font-size: 0;
+    letter-spacing: -5px;
+    vertical-align: top;
+} */
