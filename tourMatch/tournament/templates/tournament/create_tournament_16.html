@@ -21,31 +21,131 @@
                         <p class="screen">Final</p>
                     </div>
                 </div>
-                {% for sublist in participants %}
-                    {% for participant in sublist %}
-                    <div class="players">
-                        <div class="match01 round_group">
-                            <div class="match_g01">
-                                <div class="match_list">
-                                    <p class="bracket_num">#<em>{{forloop.counter}}</em></p>
-                                    <div class="box_s">                                    
-                                        <div class="match_list_cont01 l01"><span>{{forloop.counter}}</span>
-                                            <div><p>Player{{participant}}</p></div>
-                                        </div>
-                                        
-                                        <!-- <div class="match_list_cont02 l01"><span>{{forloop.counter}}</span>
-                                            <div><p>Player{{participant}}</p></div>
-                                        </div> -->
-                                        
+                <div id="players">
+                    <div class="match_01 round_group">
+                        {% for sublist in participants %}
+                        <div class="match_g01">
+                            {% with match_count=forloop.counter|add:"-1"|mul:"2"|add:"1"|sum_digits %}
+                            <div class="match_list number{{match_count}}">
+                                <p class="bracket_num">Match #<em>{{match_count}}</em></p>
+                                <div class="box_s">
+                                    <div class="match_list_cont01 l01"><span>{{forloop.counter|add:"-1"|mul:"4"|add:"1"|sum_digits}}</span>
+                                        <div><p>Player{{sublist.0}}</p></div>
+                                    </div>
+                                    
+                                    <div class="match_list_cont02 l01"><span>{{forloop.counter|add:"-1"|mul:"4"|add:"2"|sum_digits}}</span>
+                                        <div><p>Player{{sublist.1}}</p></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            {% endwith %}                                   
+                            {% with match_count=forloop.counter|add:"-1"|mul:"2"|add:"2"|sum_digits %}
+                            <div class="match_list bottom01 number{{match_count}}">
+                                <p class="bracket_num">Match #<em>{{match_count}}</em></p>
+                                <div class="box_s">
+                                    <div class="match_list_cont01 l01"><span>{{forloop.counter|add:"-1"|mul:"4"|add:"3"|sum_digits}}</span>
+                                        <div><p>Player{{sublist.2}}</p></div>
+                                    </div>
+                                    
+                                    <div class="match_list_cont02 l01"><span>{{forloop.counter|add:"-1"|mul:"4"|add:"4"|sum_digits}}</span>
+                                        <div><p>Player{{sublist.3}}</p></div>
                                     </div>
                                 </div>
-                                <div class="match_list bottom01"></div>
                             </div>
-                        </div>                    
+                            {% endwith %}
+                        </div>
+                        {% endfor %}
+                    </div>                 
+                    <div class="match_02 round_group">
+                        {% with number_match=participants|length|div:"2"|times %}
+                        {% for number in number_match %}
+                        <div class="match_g01">
+                            <div class="match_list">
+                                <p class="bracket_num">Match #<em>{{number|add:"-1"|mul:"2"|add:"1"|sum_digits}}</em></p>
+                                <div class="box_s">                                    
+                                    <div class="match_list_cont01 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                    
+                                    <div class="match_list_cont02 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="match_list bottom01">
+                                <p class="bracket_num">Match #<em>{{number|add:"-1"|mul:"2"|add:"2"|sum_digits}}</em></p>
+                                <div class="box_s">
+                                    <div class="match_list_cont01 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                    
+                                    <div class="match_list_cont02 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                        {% endfor %}
+                        {% endwith %}
                     </div>
-                    {% endfor %}
-                {% endfor %}
-                {% endwith %}
+                    <div class="match_03 round_group">
+                        {% with number_match=participants|length|div:"4"|times %}
+                        {% for number in number_match %}
+                        <div class="match_g01">
+                            <div class="match_list">
+                                <p class="bracket_num">Match #<em>{{number|add:"-1"|mul:"2"|add:"1"|sum_digits}}</em></p>
+                                <div class="box_s">                                    
+                                    <div class="match_list_cont01 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                    
+                                    <div class="match_list_cont02 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="match_list bottom01">
+                                <p class="bracket_num">Match #<em>{{number|add:"-1"|mul:"2"|add:"2"|sum_digits}}</em></p>
+                                <div class="box_s">
+                                    <div class="match_list_cont01 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                    
+                                    <div class="match_list_cont02 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                        {% endfor %}
+                        {% endwith %}                        
+                    </div>
+                    <div class="match_04 round_group">
+                        <div class="match_g01">
+                            <div class="match_list">
+                                <p class="bracket_num">Match #<em>1</em></p>
+                                <div class="box_s">                                    
+                                    <div class="match_list_cont01 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>
+                                    
+                                    <div class="match_list_cont02 l01"><span></span>
+                                        <div><p>Player</p></div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="champion_box round_group">
+                        <p class="txt">Winner</p>
+                        <div class="player">
+                            <div class="winner"><p>Player</p></div>
+                        </div>
+                    </div>                 
+                    </div>
             </div>
 
         </div>

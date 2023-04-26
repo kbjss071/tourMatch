@@ -18,17 +18,17 @@ def create_tournament(request):
     if form.is_valid():
         participants_data = form.cleaned_data['participants_choice']
         participants = 0
-        player_count = 1
-        even = False
+        match_count = 1
+        number_match = 0
         if participants_data == '1':
             participants = randomize(list(range(1, 17)))
-            return render(request, 'tournament/create_tournament_16.html', {'participants': participants, 'even': even, 'player_count': player_count})
+            return render(request, 'tournament/create_tournament_16.html', {'participants': participants, 'number_match': number_match, 'match_count': match_count})
         elif participants_data == '2':
             participants = randomize(list(range(1, 33)))
-            return render(request, 'tournament/create_tournament_32.html', {'participants': participants, 'even': even, 'player_count': player_count})
+            return render(request, 'tournament/create_tournament_32.html', {'participants': participants, 'number_match': number_match, 'match_count': match_count})
         elif participants_data == '3':
             participants == randomize(list(range(1, 65)))
-            return render(request, 'tournament/create_tournament_64.html', {'participants': participants, 'even': even, 'player_count': player_count})
+            return render(request, 'tournament/create_tournament_64.html', {'participants': participants, 'number_match': number_match, 'match_count': match_count})
         else:
             return render(request, 'tournament/fail.html')
     else:
