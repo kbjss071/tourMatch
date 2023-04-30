@@ -17,7 +17,7 @@
     position: relative;
     top: 0;
     left: -50px;
-    padding: 15px 50px 25px 50px;
+    padding: 15px 100px 25px 50px;
     z-index: 99999;
 }
 
@@ -27,6 +27,12 @@
 
 .round_set {
     display: inline-block;
+    margin-right: 77px;
+}
+
+.round_set_outer > .round_set:not(:first-child) {
+    /* position: relative; */
+    margin-left: 77px  !important;
 }
 
 .round_set .screen {
@@ -60,13 +66,14 @@
     text-overflow: ellipsis;
 }
 
-.match_02, .match_03, .match_04, .match_05 {
+.match_02, .match_03, .match_04, .match_05{
     margin-left: 77px;
 }
 
 .round_group {
     position: relative;
     display: inline-block;
+    vertical-align: middle;
 }
 
 #bracket {
@@ -83,7 +90,19 @@
 }
 
 #players .match_02 .bottom01{
-    margin: 124px 0;
+    margin: 160px 0;
+}
+
+#players .match_03 .bottom01{
+    margin: 400px 0;
+}
+
+#players .match_04 .bottom01{
+    margin: 500px 0;
+}
+
+#players .match_05 .bottom01{
+    margin: 700px 0;
 }
 
 .match_list {
@@ -104,7 +123,7 @@
 .line_sty01 {
     position: absolute;
     right: -12px;
-    width: 24px;
+    width: 50px;
     border: 5px solid #d5d5d5;
     border-radius: 0 5px 0 0;
     border-left: none;
@@ -149,7 +168,7 @@
     right: -36px;
     width: 26px;
     height: 20px;
-    border-bottom: 15px solid #d5d5d5;
+    border-bottom: 2px solid #d5d5d5;
     display: block;
 }
 
@@ -165,7 +184,7 @@
 .line_sty03 {
     position: absolute;
     right: -12px;
-    width: 24px;
+    width: 50px;
     border: 2px solid #d5d5d5;
     border-radius: 0 0 5px 0;
     border-left: none;
@@ -181,8 +200,8 @@
 .line_sty04 {
     z-index: 1;
     position: absolute;
-    /* right: -12px; */
-    width: 27px;
+    right: -12px;
+    width: 50px;
     border: 2px solid #d5d5d5;
     border-radius: 0 5px 0 0;
     border-left: none;
@@ -217,4 +236,23 @@
     display: block;
     visibility: hidden;
     content: '';
+}
+
+.l01 {
+    display: flex;
+}
+
+.match_list p.bracket_num {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #adadad;
+    background: #ededed;
+    border-radius: 5px;
 }
