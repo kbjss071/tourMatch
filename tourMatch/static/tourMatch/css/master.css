@@ -58,6 +58,14 @@
     vertical-align: top;
 }
 
+.match_list .match_list_cont01 {
+    cursor: pointer;
+}
+
+.match_list .match_list_cont02 {
+    cursor: pointer;
+}
+
 .match_list_cont01 div p, .match_list_cont02 div p {
     padding-left: 7px;
     width: 118px;
@@ -255,4 +263,9 @@
     border: 1px solid #adadad;
     background: #ededed;
     border-radius: 5px;
+}
+
+.click_on {
+    background: #1e9fd6;
+    color: #ededed;
 }
