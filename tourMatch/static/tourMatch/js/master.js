@@ -111,4 +111,61 @@ $(function(){
         console.log(next.find(".winner p").html(p_name))
     })
 
+    $(document).on("click", '.group_cont', function(){
+        var next = $(this).parent().parent().parent().parent().next().find(".match_01")
+        var groups = $(this).parent().parent().parent()
+        var children = $(this).parent().children('.group_cont')
+
+        console.log(groups.children(".play_in_stage").eq(0))
+        
+        if ($(this).hasClass("group_winner")){
+            $(this).removeClass("group_winner")
+        } else if ($(this).hasClass("group_runner_up")){
+            $(this).removeClass("group_winner")
+            $(this).removeClass("group_runner_up")
+        } else if (children.hasClass("group_winner")){
+            $(this).addClass("group_runner_up")
+        } else {
+            $(this).addClass("group_winner")
+        }
+
+        
+        // If user chooses more than two players in group stage, remove classes
+        var classCounts = {};
+        children.each(function(){
+            var className = $(this).attr('class')
+            if(className && className !== ''){
+                if(classCounts[className]){
+                    classCounts[className]++;
+                } else {
+                    classCounts[className] = 1;
+                }
+            }
+        })
+        
+        var classSum = 0;
+
+        if (typeof classCounts["group_cont group_winner"] !== 'undefined') {
+            classSum += classCounts["group_cont group_winner"];
+          }
+          
+          if (typeof classCounts["group_cont group_winner group_runner_up"] !== 'undefined') {
+            classSum += classCounts["group_cont group_winner group_runner_up"];
+          }
+          
+          if (typeof classCounts["group_cont group_runner_up"] !== 'undefined') {
+            classSum += classCounts["group_cont group_runner_up"];
+          }
+
+        if(classSum > 2){
+            alert("More than two players have been chosen.")
+            children.removeClass("group_winner")
+            children.removeClass("group_runner_up")
+        }
+
+        var start = 0;
+        var end = 31
+
+    })
+
 })

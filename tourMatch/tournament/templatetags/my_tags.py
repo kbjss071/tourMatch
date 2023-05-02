@@ -32,3 +32,7 @@ def div(value, arg):
         return int(int(value)/int(arg, 0))
     except(ValueError, ZeroDivisionError):
         return None
+
+@register.filter
+def index (value, arg):
+    return value[arg]

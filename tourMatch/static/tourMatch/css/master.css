@@ -269,3 +269,54 @@
     background: #1e9fd6;
     color: #ededed;
 }
+
+.group_runner_up {
+    background: rgb(199, 0, 0);
+    color: #ededed;
+}
+
+.group_winner {
+    background: #1e9fd6;
+    color: #ededed;
+}
+
+
+#group_stage {
+    border: 1px solid black;
+    padding: 2vh 0 2vh 0;
+    margin: 5vh 0 5vh 0;
+}
+
+#group_stage h2 {
+    text-align: center;
+}
+
+.groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 2fr));
+    /* padding-bottom: 2vh; */
+}
+
+.play_in_stage {
+    display: inline-block;
+    margin: 10px;
+    /* height: 100px; */
+    padding-bottom: 2vh;
+    text-overflow: ellipsis;
+}
+
+.play_in_stage > span {
+    margin-bottom: 2vh;
+}
+
+.stage_players div {
+    display: flex;
+}
+
+.group_box {
+    margin-bottom: 2vh;
+}
+
+.group_cont {
+    cursor: pointer;
+}

@@ -20,6 +20,7 @@ def create_tournament(request):
         participants = 0
         match_count = 1
         number_match = 0
+        stage = list("ABCDEFGHIJKLMNOP")
         if participants_data == '1':
             participants = randomize(list(range(1, 17)))
             return render(request, 'tournament/create_tournament_16.html', {'participants': participants, 'number_match': number_match, 'match_count': match_count})
@@ -27,8 +28,8 @@ def create_tournament(request):
             participants = randomize(list(range(1, 33)))
             return render(request, 'tournament/create_tournament_32.html', {'participants': participants, 'number_match': number_match, 'match_count': match_count})
         elif participants_data == '3':
-            participants == randomize(list(range(1, 65)))
-            return render(request, 'tournament/create_tournament_64.html', {'participants': participants, 'number_match': number_match, 'match_count': match_count})
+            participants = randomize(list(range(1, 65)))
+            return render(request, 'tournament/create_tournament_64.html', {'participants': participants, 'stage': stage, 'number_match': number_match, 'match_count': match_count})
         else:
             return render(request, 'tournament/fail.html')
     else:
