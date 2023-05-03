@@ -11,12 +11,12 @@
                 <div class="group_box">
                     <h5>Group {{stage|index:forloop.counter0}}</h5>
                 </div>
-                    <div class="stage_players">
-                        <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"1"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.0}}</p></div>
-                        <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"2"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.1}}</p></div>
-                        <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"3"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.2}}</p></div>
-                        <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"4"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.3}}</p></div>
-                    </div>
+                <div class="stage_players">
+                    <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"1"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.0}}</p></div>
+                    <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"2"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.1}}</p></div>
+                    <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"3"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.2}}</p></div>
+                    <div class="group_cont"><span>{{forloop.counter0|mul:"4"|add:"4"|sum_digits}}</span>&nbsp;&nbsp;<p>Player {{sublist.3}}</p></div>
+                </div>
             </div>
             {% endfor %}
         </div>

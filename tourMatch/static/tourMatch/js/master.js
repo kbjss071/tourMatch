@@ -4,7 +4,6 @@ $(function(){
         var idx = parseInt($(this).parent().parent().parent().index()/2); 
         var idx2 = ($(this).parent().parent().parent().index())%2;
         var idx01 = $(this).parent().parent().index();
-        var idx02 = 1-idx01;
         var assigned = $(this).find('span').text()
         var p_name = $(this).find('div p').text() 
 
@@ -20,15 +19,12 @@ $(function(){
                 $(this).next().removeClass('click_on')
             };
             $(this).addClass("click_on")
-            // console.log(next.find('.match_g01').eq(idx).find('.match_list').eq(0).find('.match_list_cont01 span').html(assigned));
-            // console.log(next.find('.match_g01').eq(idx).find('.match_list').eq(0).find('.match_list_cont01 div p').html(p_name));
             if($(this).parent().parent().hasClass('bottom01')){
                 // if parent element has bottom01 class, it will be assigned to cont2
                 if(idx2 == 0){
                     // if idx2 == 0, it will be assigned to match_list class
                     next.find('.match_g01').eq(idx).find('.match_list').eq(0).find('.match_list_cont02 span').html(assigned);
                     next.find('.match_g01').eq(idx).find('.match_list').eq(0).find('.match_list_cont02 div p').html(p_name);
-                    // console.log(next.find('.match_g01').eq(idx).find('.match_list').eq(0).find('.match_list_cont2 div p').html(p_name))
                 } else if (idx2 == 1){
                     // if idx2 == 1, it will be assigned to match_list bottom01 class
                     next.find('.match_g01').eq(idx).find('.match_list').eq(1).find('.match_list_cont02 span').html(assigned)
@@ -46,8 +42,6 @@ $(function(){
                     next.find('.match_g01').eq(idx).find('.match_list').eq(1).find('.match_list_cont01 div p').html(p_name);
                 }
             }
-            // console.log(next.find('.match_list_cont01').find('div').html("checking this works"))
-            // next.find('match_g01').eq(idx).find('.match_list').eq(idx02).find('.match_list_cont01 > div > p').html(p_name);
         }
     
     })
@@ -77,7 +71,6 @@ $(function(){
             $(this).addClass("click_on")
 
             if($(this).parent().parent().hasClass('bottom01')){
-                console.log("bottom01 class selected", idx2)
                 // if parent element has bottom01 class, it will be assigned to cont2
                 if(idx2 == 0){
                     // if idx2 == 0, it will be assigned to match_list class
@@ -115,8 +108,15 @@ $(function(){
         var next = $(this).parent().parent().parent().parent().next().find(".match_01")
         var groups = $(this).parent().parent().parent()
         var children = $(this).parent().children('.group_cont')
+        var group_idx = $(this).parent().parent().index()
+        var match_w_idx = parseInt(group_idx/2)
+        var match_w_idx2 = parseInt(2*group_idx+8-(3*group_idx)/2)
+        var match_r_idx = Math.abs(parseInt((group_idx-1)/2))
+        var match_r_idx2 = parseInt(group_idx+8-group_idx/2)
+        var p_name = $(this).find('p').text()
+        var assigned = $(this).find('span').text()
 
-        console.log(groups.children(".play_in_stage").eq(0))
+        console.log(match_r_idx, match_r_idx2, match_w_idx, match_w_idx2)
         
         if ($(this).hasClass("group_winner")){
             $(this).removeClass("group_winner")
@@ -163,8 +163,40 @@ $(function(){
             children.removeClass("group_runner_up")
         }
 
-        var start = 0;
-        var end = 31
+        // Assign players into round of 32 bracket
+        if(group_idx%2==0){
+            // console.log(group_idx, "is even", $(this))
+            if($(this).hasClass("group_winner")){
+                var g_idx = Math.floor(match_w_idx/2)
+                var g_mod = match_w_idx%2
+                console.log("group_idx", group_idx, "g_idx", g_idx, "g_mod", g_mod)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont01 span').html(assigned)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont01 div p').html(p_name)
+            }
+            else if($(this).hasClass("group_runner_up")){
+                var g_idx = Math.floor(match_r_idx2/2)
+                var g_mod = match_r_idx2%2
+                console.log("group_idx", group_idx, "g_idx", g_idx)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont02 span').html(assigned)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont02 div p').html(p_name)
+            }                    
+        } else if(group_idx%2==1){
+            // console.log(group_idx, "is odd", $(this))
+            if($(this).hasClass("group_winner")){
+                var g_idx = Math.floor(match_w_idx2/2)
+                var g_mod = match_w_idx2%2
+                console.log("group_idx", group_idx, "g_idx", g_idx)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont01 span').html(assigned)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont01 div p').html(p_name)
+            }
+            else if($(this).hasClass("group_runner_up")){
+                var g_idx = Math.floor(match_r_idx/2)
+                var g_mod = match_r_idx%2
+                console.log("group_idx", group_idx, "g_idx", g_idx)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont02 span').html(assigned)
+                next.find('.match_g01').eq(g_idx).find('.match_list').eq(g_mod).find('.match_list_cont02 div p').html(p_name)
+            }
+        }
 
     })
 
