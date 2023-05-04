@@ -320,3 +320,17 @@
 .group_cont {
     cursor: pointer;
 }
+
+.title {
+    margin-bottom: 2vh;
+}
+
+.title h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.largerCheck{
+    margin-left: 15px;
+    transform: scale(1.25);
+}
