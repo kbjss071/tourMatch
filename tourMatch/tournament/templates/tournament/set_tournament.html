@@ -3,9 +3,22 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<form method="post">
+<form action="" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Create Tournament"/>
+    <div class="col-md-6 form-control py-3">
+      <label for="">Tournament Name</label>
+      <input type="text" name="tournament_name" class="form-control mx-auto my-auto" style="box-sizing: content-box; width: 98%;">
+    </div>
+    <div class="col-md-6 form-control py-3">
+      <label for="">Random</label>
+      <input type="checkbox" name="random">
+    </div>
+    <div class="col-md-6 form-control py-3">
+      <label for="">Participants_choice</label>
+      <div class="">
+        {{form.participants_choice}}
+      </div>
+    </div>
+    <input type="submit" value="Create Tournament" class="btn btn-primary"/>
   </form>
 {% endblock %}
